@@ -41,13 +41,13 @@ do_action('wp_podio_wrapper', 'update', $podio_fields);
 
 ## Options
 
-### `create`
+#### `create`
 
 ```php
 do_action('wp_podio_wrapper', 'create', $podio_fields_to_create);
 ```
 
-### `update`
+#### `update`
 
 ```php
 do_action('wp_podio_wrapper', 'update', $podio_fields_to_update);
@@ -56,7 +56,7 @@ do_action('wp_podio_wrapper', 'update', $podio_fields_to_update);
 
 ## Example
 
-### Inside your `functions.php`
+Inside your `functions.php`
 
 ```php
 // Setup your Application
@@ -66,17 +66,20 @@ define('PODIO_APP_ID', '123456');
 define('PODIO_APP_TOKEN', '987xwy987xwy987xwy');
 
 // And declare your fields
-$podio_fields = array(
-    "foo" => $_POST["field_name_foo_here"],
-    "bar" => $_POST["field_name_bar_here"],
-    "baz" => $_POST["field_name_baz_here"]
+$create_client = array(
+    "name"      => $_POST["name"],
+    "email"     => $_POST["email"],
+    "phone"     => $_POST["phone"],
+    "mobile"    => $_POST["mobile"],
+    "address"   => $_POST["address"],
+    "company"   => $_POST["company"]
 );
 ```
 
-### Then call the do_action() hook wherever you need it for create a new item:
+Then call the do_action() hook wherever you need it for create a new item:
 
 ```php
-do_action('wp_podio_wrapper', 'create', $podio_fields);
+do_action('wp_podio_wrapper', 'create', $create_client);
 ```
 
 
