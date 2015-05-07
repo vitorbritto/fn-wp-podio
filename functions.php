@@ -1,12 +1,8 @@
 <?php
 
-$vendor_path   = get_template_directory() . '/vendor/';
-require_once $vendor_path . 'podio/api.php';
-
 // Set the API Key:
 define('PODIO_CLIENT_ID', 'YOUR_ID_GOES_HERE');
 define('PODIO_CLIENT_SECRET', 'YOUR_SECRET_GOES_HERE');
-
 
 // Set the App ID:
 define('PODIO_APP_ID', 'YOUR_APP_ID_GOES_HERE');
@@ -21,6 +17,9 @@ $podio_fields = array(
     "baz" => $_POST["field_name_baz_here"]
 );
 
+// Require the Podio API Client Library
+$vendor_path = get_template_directory() . '/vendor/podio';
+require_once $vendor_path . '/api.php';
 
 
 function wp_podio_wrapper($option, $fields) {
@@ -46,6 +45,3 @@ function wp_podio_wrapper($option, $fields) {
 }
 
 add_action('wp_podio_wrapper', 'wp_podio_wrapper', 10, 2);
-
-// Usage: do_action('wp_podio_wrapper', 'create', $podio_fields);
-
